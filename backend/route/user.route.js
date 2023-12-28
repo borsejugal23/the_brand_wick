@@ -8,11 +8,24 @@ const { userModel } = require("../model/user.model");
 
 userRouter.post("/register",async(req,res)=>{
    try {
-    const {name,email,password}=req.body;
+    const {name,username,email,phone,password}=req.body;
+
+     // Check for missing fields
+  const missingFields = [];
+  if (!name) missingFields.push('name');
+  if (!username) missingFields.push('username');
+  if (!email) missingFields.push('email');
+  if (!phone) missingFields.push('phone');
+  if (!password) missingFields.push('password');
+
+  // If any fields are missing, return an error
+  if (missingFields.length > 0) {
+    return res.status(400).json({ msg: `Please fill in the following fields: ${missingFields.join(',')}` });
+  }
     const existinguser= await userModel.find({email});
 
     if (existinguser.length){
-        return res.status(200).json({msg:"User has already registered,please login"})
+        return res.status(201).json({msg:"User has already registered,please login"})
     }
 
     bcrypt.hash(password,5,async(err,hash)=>{
@@ -21,7 +34,7 @@ userRouter.post("/register",async(req,res)=>{
             return res.status(400).json({msg:err.message})
         }
         else{
-            const newuser= new userModel({name,email,password:hash});
+            const newuser= new userModel({name,username,email,phone,password:hash});
             await newuser.save();
             return res.status(200).json({msg:"Registered successfully"})
         }
@@ -50,7 +63,7 @@ userRouter.post("/login",async(req,res)=>{
 
             }
             else{
-                return res.status(400).json({error:err.message})
+                return res.status(400).json({error:"Wrong credential"})
             }
         })
     
