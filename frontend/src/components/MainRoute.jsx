@@ -5,7 +5,7 @@ import Signin from "./Login"
 const MainRoutes=()=>{
     return <>
     <Routes>
-        <Route path="/register" element={<Signup/>}/>
+        <Route path="/" element={<Signup/>}/>
         <Route path="/login" element={<Signin/>}/>
     </Routes>
     </>

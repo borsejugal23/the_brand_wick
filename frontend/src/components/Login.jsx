@@ -30,7 +30,7 @@ import { useToast } from '@chakra-ui/react';
           },
           body: JSON.stringify({ email, password }),
         });
-        // console.log(res)
+        console.log(res)
         const data = await res.json();
        if (res.status===200){
         toast({

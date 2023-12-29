@@ -10,7 +10,7 @@ export const Navbar = () => {
       boxShadow="md"
       bg="white" 
     >
-      <Link as={RouterLink} to="/register">
+      <Link as={RouterLink} to="/">
         <Text fontSize="xl" fontWeight="bold" color="blue.500" textDecoration="none">
           Register
         </Text>

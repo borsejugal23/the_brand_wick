@@ -119,27 +119,27 @@ export default function Signup() {
           p={8}>
           <Stack spacing={4}>
 
-            <FormControl id="name">
+            < FormControl isRequired id="name">
               <FormLabel>Name</FormLabel>
               <Input type="name" value={state.name}onChange={(e)=>dispatch({type:"NAME",payload:e.target.value})}required/>
             </FormControl>
 
-            <FormControl id="Username" >
+            < FormControl isRequired id="Username"  >
               <FormLabel>Username</FormLabel>
               <Input type="name" value={state.username} onChange={(e)=>dispatch({type:"USERNAME",payload:e.target.value})} required/>
 
             </FormControl>
 
-            <FormControl id="email">
+            < FormControl isRequired id="email">
               <FormLabel>Email address</FormLabel>
               <Input type="email" value={state.email}onChange={(e)=>dispatch({type:"EMAIL",payload:e.target.value})} required/>
             </FormControl>
 
-            <FormControl id="Phone Number">
+            < FormControl isRequired id="Phone Number">
               <FormLabel>Phone Number</FormLabel>
               <Input type="number" value={state.phone}onChange={(e)=>dispatch({type:"PHONE",payload:e.target.value})}required/>
             </FormControl>
-            <FormControl id="password">
+            < FormControl isRequired id="password">
               <FormLabel>Password</FormLabel>
               <Input type="password" value={state.password}onChange={(e)=>dispatch({type:"PASSWORD",payload:e.target.value})} required/>
             </FormControl>
@@ -160,7 +160,6 @@ export default function Signup() {
               >
                 Sign in
               </Button>
-                <Link color={'blue.400'}>Login</Link>
 
             </Stack>
           </Stack>
