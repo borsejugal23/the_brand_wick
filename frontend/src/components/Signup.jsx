@@ -62,6 +62,7 @@ export default function Signup() {
                       console.log('Registration successful:', data);
                       if (data.msg==="Registered successfully"){
                         toast({
+                          position:"top",
                           title: `${data.msg}`,
                           status: 'success',
                           duration: 3000,
@@ -71,6 +72,7 @@ export default function Signup() {
                       }
                       else if (data.msg!=="Registered successfully"){
                         toast({
+                          position:"top",
                           title: `${data.msg}`,
                           status: 'error',
                           duration: 3000,
@@ -85,6 +87,7 @@ export default function Signup() {
                     .catch((error) => {
                       console.error('Registration failed:', error);
                       toast({
+                        position:"top",
                         title: `${error.error}`,
                         status: 'error',
                         duration: 2000,

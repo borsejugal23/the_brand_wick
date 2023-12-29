@@ -32,15 +32,19 @@ import { useToast } from '@chakra-ui/react';
         });
         // console.log(res)
         const data = await res.json();
+       if (res.status===200){
         toast({
+          position:"top",
           title: `${data.msg}`,
           status: 'success',
           duration: 3000,
           isClosable: true,
 
       })
+       }
       if (res.status===400){
        return toast({
+        position:"top",
           title: `${data.error}`,
           status: 'error',
           duration: 3000,
@@ -83,12 +87,14 @@ import { useToast } from '@chakra-ui/react';
             bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'lg'}
             p={8}>
+                
+             
             <Stack spacing={4}>
-              <FormControl id="email">
+              <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
               </FormControl>
-              <FormControl id="password">
+              <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
               </FormControl>
